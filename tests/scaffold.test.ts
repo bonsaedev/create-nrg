@@ -105,6 +105,7 @@ describe("scaffoldProject", () => {
         ".gitignore",
         ".prettierrc.json",
         "commitlint.config.js",
+        "node-red.settings.ts",
         "README.md",
       ];
 
