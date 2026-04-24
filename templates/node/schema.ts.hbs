@@ -9,6 +9,13 @@ const ConfigsSchema = defineSchema(
   },
 );
 
+const CredentialsSchema = defineSchema(
+  {},
+  {
+    $id: "{{pascalCaseNodeName}}CredentialsSchema",
+  },
+);
+
 const InputSchema = defineSchema(
   {},
   {
@@ -23,4 +30,11 @@ const OutputSchema = defineSchema(
   },
 );
 
-export { ConfigsSchema, InputSchema, OutputSchema };
+const SettingsSchema = defineSchema(
+  {},
+  {
+    $id: "{{pascalCaseNodeName}}SettingsSchema",
+  },
+);
+
+export { ConfigsSchema, CredentialsSchema, InputSchema, OutputSchema, SettingsSchema };

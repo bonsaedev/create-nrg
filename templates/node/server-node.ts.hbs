@@ -1,12 +1,26 @@
-import type { Schema, Infer } from "@bonsae/nrg/server";
+import type { Schema, Infer, RED } from "@bonsae/nrg/server";
 import { IONode } from "@bonsae/nrg/server";
-import { ConfigsSchema, InputSchema, OutputSchema } from "../schemas/{{dashCaseNodeName}}";
+import {
+  ConfigsSchema,
+  CredentialsSchema,
+  InputSchema,
+  OutputSchema,
+  SettingsSchema,
+} from "../schemas/{{dashCaseNodeName}}";
 
 export type Config = Infer<typeof ConfigsSchema>;
+export type Credentials = Infer<typeof CredentialsSchema>;
 export type Input = Infer<typeof InputSchema>;
 export type Output = Infer<typeof OutputSchema>;
+export type Settings = Infer<typeof SettingsSchema>;
 
-export default class {{pascalCaseNodeName}} extends IONode<Config, {}, Input, Output> {
+export default class {{pascalCaseNodeName}} extends IONode<
+  Config,
+  Credentials,
+  Input,
+  Output,
+  Settings
+> {
   public static override readonly type: string = "{{dashCaseNodeName}}";
   public static override readonly category: string = "{{nodeCategory}}";
   public static override readonly color: `#${string}` = "{{nodeColor}}";
@@ -14,8 +28,14 @@ export default class {{pascalCaseNodeName}} extends IONode<Config, {}, Input, Ou
   public static override readonly outputs: number = {{nodeOutputs}};
 
   public static override readonly configSchema: Schema = ConfigsSchema;
+  public static override readonly credentialsSchema: Schema = CredentialsSchema;
   public static override readonly inputSchema: Schema = InputSchema;
   public static override readonly outputsSchema: Schema = OutputSchema;
+  public static override readonly settingsSchema: Schema = SettingsSchema;
+
+  public static override async registered(RED: RED): Promise<void> {
+    RED.log.info(`${this.type} registered`);
+  }
 
   public override created(): void {
     this.log(`{{pascalCaseNodeName}} ${this.id} created`);

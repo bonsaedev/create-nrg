@@ -141,11 +141,6 @@ describe("scaffoldProject", () => {
         "src/server",
         "src/server/nodes",
         "src/server/schemas",
-        "src/client",
-        "src/client/nodes",
-        "src/client/components",
-        "src/client/assets",
-        "src/client/public",
         "src/locales",
         "src/locales/labels",
         "src/locales/docs",
@@ -165,10 +160,7 @@ describe("scaffoldProject", () => {
       }
     });
 
-    it("creates client and server tsconfig files", () => {
-      expect(
-        fs.existsSync(path.join(projectDir, "src/client/tsconfig.json")),
-      ).toBe(true);
+    it("creates server tsconfig file", () => {
       expect(
         fs.existsSync(path.join(projectDir, "src/server/tsconfig.json")),
       ).toBe(true);
@@ -245,6 +237,9 @@ describe("scaffoldProject", () => {
       expect(content).toContain('color: `#${string}` = "#1A1A1A"');
       expect(content).toContain("inputs: number = 1");
       expect(content).toContain("outputs: number = 2");
+      expect(content).toContain("CredentialsSchema");
+      expect(content).toContain("SettingsSchema");
+      expect(content).toContain("registered(RED: RED)");
     });
 
     it("substitutes node class name (PascalCase) in schema", () => {
@@ -253,8 +248,10 @@ describe("scaffoldProject", () => {
         "utf-8",
       );
       expect(content).toContain('$id: "MyNodeConfigsSchema"');
+      expect(content).toContain('$id: "MyNodeCredentialsSchema"');
       expect(content).toContain('$id: "MyNodeInputSchema"');
       expect(content).toContain('$id: "MyNodeOutputSchema"');
+      expect(content).toContain('$id: "MyNodeSettingsSchema"');
       expect(content).toContain('default: "my-node"');
     });
 

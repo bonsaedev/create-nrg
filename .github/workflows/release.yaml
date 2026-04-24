@@ -1,6 +1,11 @@
 name: Release
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (no publish, no tags, no GitHub release)"
+        type: boolean
+        default: false
 
 permissions:
   packages: write
@@ -33,6 +38,8 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install
+        env:
+          HUSKY: 0
 
       - name: Lint
         run: pnpm lint
@@ -48,6 +55,8 @@ jobs:
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4.1.1
+        with:
+          dry_run: ${{ inputs.dry_run }}
         env:
           HUSKY: 0
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
