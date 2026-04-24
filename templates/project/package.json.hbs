@@ -1,0 +1,61 @@
+{
+  "name": "{{projectName}}",
+  "version": "0.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10.11.0"
+  },
+  "keywords": [
+    "node-red",
+    "nrg"
+  ],
+  "scripts": {
+    "debug": "NODE_OPTIONS='--inspect-brk' NODE_ENV=development vite",
+    "dev": "NODE_ENV=development vite",
+    "build:dev": "NODE_ENV=development vite build",
+    "build": "NODE_ENV=production vite build",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write \"src/**/*.{ts,vue,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,vue,json}\"",
+    "tsc:client": "tsc -p src/client/tsconfig.json",
+    "tsc:server": "tsc -p src/server/tsconfig.json",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "src/**/*.json": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@bonsae/nrg": "latest",
+    "@sinclair/typebox": "^0.34.49"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@eslint/js": "^9.27.0",
+    "@types/node": "^22.15.18",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-vue": "^10.1.0",
+    "globals": "^16.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1",
+    "vite": "^6.3.4",
+    "vue": "^3.5.14"
+  }
+}

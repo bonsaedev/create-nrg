@@ -1,0 +1,26 @@
+import { SchemaType, defineSchema } from "@bonsae/nrg/server";
+
+const ConfigsSchema = defineSchema(
+  {
+    name: SchemaType.String({ default: "{{dashCaseNodeName}}" }),
+  },
+  {
+    $id: "{{pascalCaseNodeName}}ConfigsSchema",
+  },
+);
+
+const InputSchema = defineSchema(
+  {},
+  {
+    $id: "{{pascalCaseNodeName}}InputSchema",
+  },
+);
+
+const OutputSchema = defineSchema(
+  {},
+  {
+    $id: "{{pascalCaseNodeName}}OutputSchema",
+  },
+);
+
+export { ConfigsSchema, InputSchema, OutputSchema };
