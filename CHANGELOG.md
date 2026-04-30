@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/bonsaedev/create-nrg/compare/v0.2.1...v0.3.0) (2026-04-30)
+
+
+### Features
+
+* remove @sinclair/typebox from project template ([3831603](https://github.com/bonsaedev/create-nrg/commit/38316036f4901f7e9e5875554261c75a865afa30))
+
 ## [0.2.1](https://github.com/bonsaedev/create-nrg/compare/v0.2.0...v0.2.1) (2026-04-24)
 
 
